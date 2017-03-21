@@ -15,7 +15,10 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
-    path = require('path');
+    path = require('path'),
+    minifycss = require('gulp-minify-css'),
+    bsConfig = require("gulp-bootstrap-configurator");
+
 
 function format(string) {
     var username = string.toLowerCase();
@@ -76,8 +79,12 @@ gulp.task('default', function (done) {
         default: defaults.userName
     }, {
         type: 'confirm',
+        name: 'mdbootstrap',
+        message: 'Install MDBootstrap?'
+    }, {
+        type: 'confirm',
         name: 'moveon',
-        message: 'Continue?'
+        message: 'Finish Install?'
     }];
     //Ask
     inquirer.prompt(prompts,
@@ -85,7 +92,16 @@ gulp.task('default', function (done) {
             if (!answers.moveon) {
                 return done();
             }
+            
             answers.appNameSlug = _.slugify(answers.appName);
+
+            if(answers.mdbootstrap){
+              gulp.src(__dirname + '/assets/**')
+                  .pipe(template(answers))
+                  .pipe(conflict('./'))
+                  .pipe(gulp.dest('./assets'))
+            }
+
             gulp.src(__dirname + '/templates/**')
                 .pipe(template(answers))
                 .pipe(conflict('./'))

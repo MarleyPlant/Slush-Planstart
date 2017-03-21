@@ -4,8 +4,7 @@ var gulp = require('gulp'),
     minifycss = require('gulp-minify-css'),
     minify = require('gulp-minify'),
     livereload = require('gulp-livereload'),
-    bsConfig = require("gulp-bootstrap-configurator");
-
+    bsConfig = require('gulp-bootstrap-configurator')
 
 gulp.task('styles', function(){
   gulp.src('scss/**/*.scss')
@@ -19,7 +18,7 @@ gulp.task('styles', function(){
 
 // For CSS
 gulp.task('make-bootstrap-css', function(){
-  return gulp.src("./config.json")
+  return gulp.src("./bsconfig.json")
     .pipe(bsConfig.css())
     .pipe(minifycss())
     .pipe(gulp.dest("./assets"));
@@ -28,7 +27,7 @@ gulp.task('make-bootstrap-css', function(){
 
 // For JS
 gulp.task('make-bootstrap-js', function(){
-  return gulp.src("./config.json")
+  return gulp.src("./bsconfig.json")
     .pipe(bsConfig.js())
     .pipe(minify())
     .pipe(gulp.dest("./assets"));

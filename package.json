@@ -21,7 +21,7 @@
         "npm": ">=1.4.3"
     },
     "scripts": {
-        "test": "echo \"No tests\""
+        "test": "gulp build"
     },
     "dependencies": {
         "slush": ">=1.0.0",

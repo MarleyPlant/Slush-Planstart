@@ -12,7 +12,7 @@
     "gulp-minify-css": "*",
     "gulp-minify": "*",
     "gulp-livereload": "*",
-    "bootstrap": "x",
+    "bootstrap": "*",
     "gulp-bootstrap-configurator": "*"
   }
 }
