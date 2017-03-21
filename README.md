@@ -1,4 +1,6 @@
-# Slush Planstart [![Build [![Status](https://secure.travis-ci.com/MarleyPlant/slush-planstart.png?branch=master)](https://travis-ci.org/MarleyPlant/slush-planstart) 
+# Slush Planstart
+[![BuildStatus](https://travis-ci.com/MarleyPlant/Slush-Planstart.svg?token=coQixfkXNuyuVgGAm5J4&branch=master)](https://travis-ci.com/MarleyPlant/Slush-Planstart)
+
 [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-planstart.png)](http://badges.enytc.com/for/npm/slush-planstart)
 
 > A Slush Generator for a wordpress starter theme.
