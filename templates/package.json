@@ -7,9 +7,12 @@
   },
   "dependencies": {
     "gulp": "*",
-    "gulp-ruby-sass": "*",
+    "gulp-sass": "*",
     "gulp-autoprefixer": "*",
     "gulp-minify-css": "*",
-    "gulp-livereload": "*"
+    "gulp-minify": "*",
+    "gulp-livereload": "*",
+    "bootstrap": "x",
+    "gulp-bootstrap-configurator": "*"
   }
 }
