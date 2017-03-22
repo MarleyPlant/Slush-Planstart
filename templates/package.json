@@ -3,7 +3,7 @@
   "version": "<%= appVersion %>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MarleyPlant/Planstart"
+    "url": "https://github.com/<%= userName %>/<%= appNameSlug %>"
   },
   "dependencies": {
     "gulp": "*",
@@ -11,8 +11,6 @@
     "gulp-autoprefixer": "*",
     "gulp-minify-css": "*",
     "gulp-minify": "*",
-    <% if(includeBootstrap) { %>"bootstrap": "*",
-    "gulp-bootstrap-configurator": "*",<% } %>
     "gulp-livereload": "*"
   }
 }

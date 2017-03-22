@@ -6,6 +6,7 @@
  * Licensed under the MIT license.
  */
 
+
 'use strict';
 
 var gulp = require('gulp'),
@@ -17,6 +18,7 @@ var gulp = require('gulp'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
     path = require('path')
+
 
 
 function format(string) {
@@ -43,7 +45,6 @@ var defaults = (function () {
     if (require('fs').existsSync(configFile)) {
         user = require('iniparser').parseSync(configFile).user;
     }
-
     return {
         appName: workingDirName,
         userName: osUserName || format(user.name || ''),
@@ -86,6 +87,10 @@ gulp.task('default', function (done) {
         message: 'Install MDBootstrap?'
     }, {
         type: 'confirm',
+        name: 'addHeaderNav',
+        message: 'Add MDBoostrap Navbar to header?'
+    }, {
+        type: 'confirm',
         name: 'moveon',
         message: 'Finish Install?'
     }];
@@ -99,10 +104,18 @@ gulp.task('default', function (done) {
             answers.appNameSlug = _.slugify(answers.appName);
 
             if(answers.includeMDBootstrap){
-                download(' https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/css/mdb.min.css')
+                download(' https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/css/mdb.min.css') //MDB CSS
                   .pipe(gulp.dest("./assets"));
 
-                download('https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js')
+                download('https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js') //MDB JS
+                  .pipe(gulp.dest("./assets"));
+            }
+
+            if(answers.includeBootstrap){
+                download('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css') //Bootstrap CSS
+                  .pipe(gulp.dest("./assets"));
+
+                download('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js') //Bootstrap JS
                   .pipe(gulp.dest("./assets"));
             }
 
