@@ -8,10 +8,10 @@ var gulp = require('gulp'),
 gulp.task('styles', function(){
   gulp.src('scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest(''))
+		.pipe(gulp.dest('css'))
 		.pipe(autoprefixer())
 		.pipe(minifycss())
-		.pipe(gulp.dest(''))
+		.pipe(gulp.dest('css'))
 		.pipe(livereload());
 });
 
