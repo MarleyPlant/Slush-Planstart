@@ -1,7 +1,7 @@
 <?php
 function <%= appNameSlug %>_load_js(){ //Load the Js Librararies needed
 <% if(includeBootstrap) { %>
-  wp_register_script( 'bootstrap', get_template_directory_uri() . '/assets/bootstrap-min.js'); //Load generated Bootstrap_JS
+  wp_register_script( 'bootstrap', get_template_directory_uri() . '/assets/bootstrap.min.js'); //Load generated Bootstrap_JS
   wp_enqueue_script( 'bootstrap' ); //Add bootstrap_JS to header
 <% } %>
 
@@ -13,7 +13,7 @@ function <%= appNameSlug %>_load_js(){ //Load the Js Librararies needed
 
 function <%= appNameSlug %>_load_css(){
 <% if(includeBootstrap) { %>
-  wp_register_style('bootstrap', get_template_directory_uri() . '/assets/bootstrap.css'); //Load generated bootstrap
+  wp_register_style('bootstrap', get_template_directory_uri() . '/assets/bootstrap.min.css'); //Load generated bootstrap
   wp_enqueue_style('bootstrap'); //Add bootstrap to header
 <% } %>
 
