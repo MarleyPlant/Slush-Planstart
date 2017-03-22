@@ -4,6 +4,11 @@ function <%= appNameSlug %>_load_js(){ //Load the Js Librararies needed
   wp_register_script( 'bootstrap', get_template_directory_uri() . '/assets/bootstrap-min.js'); //Load generated Bootstrap_JS
   wp_enqueue_script( 'bootstrap' ); //Add bootstrap_JS to header
 <% } %>
+
+<% if(includeMDBootstrap) { %>
+  wp_register_script( 'mdb', get_template_directory_uri() . '/assets/mdb.min.js'); //Load generated Bootstrap_JS
+  wp_enqueue_script( 'mdb' ); //Add bootstrap_JS to header
+<% } %>
 }
 
 function <%= appNameSlug %>_load_css(){
@@ -13,8 +18,8 @@ function <%= appNameSlug %>_load_css(){
 <% } %>
 
 <% if(includeMDBootstrap) { %>
-  wp_register_style( 'mdbootstrap', get_template_directory_uri() . '/assets/mdb.css'); //Load MDBootstrap Library
-  wp_enqueue_style('mdbootstrap');
+  wp_register_style( 'mdb', get_template_directory_uri() . '/assets/mdb.min.css'); //Load MDBootstrap Library
+  wp_enqueue_style('mdb');
 <% } %>
 }
 add_action( 'wp_enqueue_scripts', '<%= appNameSlug %>_load_css'); //Load the CSS Libraries into the header.

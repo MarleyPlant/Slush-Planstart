@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     install = require('gulp-install'),
     conflict = require('gulp-conflict'),
     template = require('gulp-template'),
+    download = require('gulp-download'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
@@ -98,10 +99,11 @@ gulp.task('default', function (done) {
             answers.appNameSlug = _.slugify(answers.appName);
 
             if(answers.includeMDBootstrap){
-              gulp.src(__dirname + '/assets/**')
-                  .pipe(template(answers))
-                  .pipe(conflict('./'))
-                  .pipe(gulp.dest('./assets'))
+                download(' https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/css/mdb.min.css')
+                  .pipe(gulp.dest("./assets"));
+
+                download('https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js')
+                  .pipe(gulp.dest("./assets"));
             }
 
             gulp.src(__dirname + '/templates/**')
