@@ -11,8 +11,8 @@
     "gulp-autoprefixer": "*",
     "gulp-minify-css": "*",
     "gulp-minify": "*",
-    "gulp-livereload": "*",
-    "bootstrap": "*",
-    "gulp-bootstrap-configurator": "*"
+    <% if(includeBootstrap) { %>"bootstrap": "*",
+    "gulp-bootstrap-configurator": "*",<% } %>
+    "gulp-livereload": "*"
   }
 }

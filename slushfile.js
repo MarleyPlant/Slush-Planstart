@@ -15,9 +15,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
-    path = require('path'),
-    minifycss = require('gulp-minify-css'),
-    bsConfig = require("gulp-bootstrap-configurator");
+    path = require('path')
 
 
 function format(string) {
@@ -79,7 +77,11 @@ gulp.task('default', function (done) {
         default: defaults.userName
     }, {
         type: 'confirm',
-        name: 'mdbootstrap',
+        name: 'includeBootstrap',
+        message: 'Install Bootstrap?'
+    }, {
+        type: 'confirm',
+        name: 'includeMDBootstrap',
         message: 'Install MDBootstrap?'
     }, {
         type: 'confirm',
@@ -92,10 +94,10 @@ gulp.task('default', function (done) {
             if (!answers.moveon) {
                 return done();
             }
-            
+
             answers.appNameSlug = _.slugify(answers.appName);
 
-            if(answers.mdbootstrap){
+            if(answers.includeMDBootstrap){
               gulp.src(__dirname + '/assets/**')
                   .pipe(template(answers))
                   .pipe(conflict('./'))

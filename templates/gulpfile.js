@@ -3,8 +3,8 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     minify = require('gulp-minify'),
-    livereload = require('gulp-livereload'),
-    bsConfig = require('gulp-bootstrap-configurator')
+    <% if(includeBootstrap) { %>bsConfig = require('gulp-bootstrap-configurator'),<% } %>
+    livereload = require('gulp-livereload')
 
 gulp.task('styles', function(){
   gulp.src('scss/**/*.scss')
@@ -16,7 +16,7 @@ gulp.task('styles', function(){
 		.pipe(livereload());
 });
 
-// For CSS
+<% if(includeBootstrap) { %>// For CSS
 gulp.task('make-bootstrap-css', function(){
   return gulp.src("./bsconfig.json")
     .pipe(bsConfig.css())
@@ -34,9 +34,13 @@ gulp.task('make-bootstrap-js', function(){
     // It will create `bootstrap.js` in directory `assets`.
 });
 
+gulp.task('bootstrap',['make-bootstrap-css', 'make-bootstrap-js'])<% } %>
 gulp.task('default',['styles']);
-gulp.task('bootstrap',['make-bootstrap-css', 'make-bootstrap-js'])
-gulp.task('build', ['make-bootstrap-css', 'make-bootstrap-js', 'styles'])
+<% if(includeBootstrap) { %>
+gulp.task('build', ['make-bootstrap-css', 'make-bootstrap-js', 'styles']) //Build task if bootstrap is included
+<% }else{ %>
+gulp.task('build', ['styles']) //Build task if bootstrap is not included
+<% } %>
 gulp.task('watch', function() {
 
 	livereload.listen();
