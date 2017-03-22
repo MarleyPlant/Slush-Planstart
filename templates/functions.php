@@ -12,6 +12,9 @@ function <%= appNameSlug %>_load_js(){ //Load the Js Librararies needed
 }
 
 function <%= appNameSlug %>_load_css(){
+  wp_register_style('<%= appName %>', get_template_directory_uri() . '/css/theme.css'); //Load generated bootstrap
+  wp_enqueue_style('<%= appName %>'); //Add bootstrap to header
+
 <% if(includeBootstrap) { %>
   wp_register_style('bootstrap', get_template_directory_uri() . '/assets/bootstrap.min.css'); //Load generated bootstrap
   wp_enqueue_style('bootstrap'); //Add bootstrap to header
