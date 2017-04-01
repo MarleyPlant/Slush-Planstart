@@ -78,13 +78,22 @@ gulp.task('default', function (done) {
         message: 'What is the github username?',
         default: defaults.userName
     }, {
-        type: 'confirm',
-        name: 'includeBootstrap',
-        message: 'Install Bootstrap?'
-    }, {
-        type: 'confirm',
-        name: 'includeMDBootstrap',
-        message: 'Install MDBootstrap?'
+        name: 'frameworks',
+        message: 'Allrighty so now your gonna need some frameworks, what you after?',
+        type: 'checkbox',
+        choices: [{
+                    name: 'Bootstrap',
+                    value: 'includeBootstrap',
+                    checked: true
+                  }, {
+                    name: 'MDBootstrap',
+                    value: 'includeMDBootstrap',
+                    checked: false
+                  }, {
+                    name: 'FlatUI',
+                    value: 'includeFlatUI',
+                    checked: false
+                  }]
     }, {
         type: 'confirm',
         name: 'addHeaderNav',
@@ -102,8 +111,7 @@ gulp.task('default', function (done) {
             }
 
             answers.appNameSlug = _.slugify(answers.appName);
-
-            if(answers.includeMDBootstrap){
+            if(answers.frameworks.includes('includeMDBootstrap')){
                 download(' https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/css/mdb.min.css') //MDB CSS
                   .pipe(gulp.dest("./assets"));
 
@@ -111,8 +119,8 @@ gulp.task('default', function (done) {
                   .pipe(gulp.dest("./assets"));
             }
 
-            if(answers.includeBootstrap){
-                download('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css') //Bootstrap CSS
+            if(answers.frameworks.includes('includeBootstrap')){
+                download('https://maxcdn.bootstrapcdn.com/bootstr3ap/4.0.0-alpha.6/css/bootstrap.min.css') //Bootstrap CSS
                   .pipe(gulp.dest("./assets"));
 
                 download('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js') //Bootstrap JS
