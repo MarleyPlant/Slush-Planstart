@@ -11,6 +11,7 @@
 
 var gulp = require('gulp'),
     clear = require('clear'),
+    colors = require('colors'),
     install = require('gulp-install'),
     conflict = require('gulp-conflict'),
     template = require('gulp-template'),
@@ -114,13 +115,16 @@ gulp.task('default', function (done) {
                 | |   | | (_| | | | /\__/ / || (_| | |  | |_  \n\
                 \_|   |_|\__,_|_| |_\____/ \__\__,_|_|   \__| \n\
                                                               \n\
-                                                              \n\ ")
+                                                              \n\ ".rainbow)
 
     inquirer.prompt(prompts,
         function (answers) {
             if (!answers.moveon) {
                 return done();
             }
+
+            console.log("Allrighty so i'm going to start generating ".green + answers.appName + " for you sit tight while I download and compile all the requirements!".green)
+
 
             answers.appNameSlug = _.slugify(answers.appName);
             if(answers.frameworks.includes('includeMDBootstrap')){
