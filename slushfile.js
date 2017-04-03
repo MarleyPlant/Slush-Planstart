@@ -10,6 +10,7 @@
 'use strict';
 
 var gulp = require('gulp'),
+    clear = require('clear'),
     install = require('gulp-install'),
     conflict = require('gulp-conflict'),
     template = require('gulp-template'),
@@ -104,6 +105,17 @@ gulp.task('default', function (done) {
         message: 'Finish Install?'
     }];
     //Ask
+    clear();
+    console.log(" \n\
+                ______ _             _____ _             _    \n\
+                | ___ \ |           /  ___| |           | |   \n\
+                | |_/ / | __ _ _ __ \ `--.| |_ __ _ _ __| |_  \n\
+                |  __/| |/ _` | '_ \ `--. \ __/ _` | '__| __| \n\
+                | |   | | (_| | | | /\__/ / || (_| | |  | |_  \n\
+                \_|   |_|\__,_|_| |_\____/ \__\__,_|_|   \__| \n\
+                                                              \n\
+                                                              \n\ ")
+
     inquirer.prompt(prompts,
         function (answers) {
             if (!answers.moveon) {
@@ -116,6 +128,11 @@ gulp.task('default', function (done) {
                   .pipe(gulp.dest("./assets"));
 
                 download('https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js') //MDB JS
+                  .pipe(gulp.dest("./assets"));
+            }
+
+            if(answers.frameworks.includes('includeFlatUI')){
+                download('https://designmodo.github.io/Flat-UI/dist/css/flat-ui.css') //FlatUI CSS
                   .pipe(gulp.dest("./assets"));
             }
 
