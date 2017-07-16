@@ -5,7 +5,7 @@
   </head>
 
   <body>
-    <% if(addHeaderNav) { %>
+    <% if(includeTemplate) { %>
     <!--Navbar-->
     <nav class="navbar navbar-toggleable-md navbar-dark bg-primary">
         <div class="container">

@@ -1,0 +1,37 @@
+{
+  "name": "<%= appNameSlug %>",
+  "homepage": "https://github.com/<%= userName %>/<%= appNameSlug %>",
+  "authors": [
+    "<%= authorName %> <<%= authorEmail %>>"
+  ],
+  "description": "<%= appDescription %>",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+      <% if(frameworks.includes('Bootstrap')) { %>"bootstrap": "^3.3.7"<% } %>
+      <% if(frameworks.includes('Bulma')) { %>"bulma": "*"<% } %>
+  },
+  "overrides": {
+    <% if(frameworks.includes('Bulma')) { %>
+    "bulma": {
+      "main": "**/*.css"
+    }
+    <% } %>
+
+    <% if(frameworks.includes('Bootstrap')) { %>
+    "bootstrap": {
+      "main": [
+          "dist/css/bootstrap.css",
+          "dist/js/bootstrap.js"
+        ]
+    }
+    <% } %>
+  }
+}

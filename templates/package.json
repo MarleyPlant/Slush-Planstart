@@ -1,5 +1,6 @@
 {
   "name": "<%= appNameSlug %>",
+  "description": "<%= appDescription %>",
   "version": "<%= appVersion %>",
   "repository": {
     "type": "git",
@@ -9,8 +10,11 @@
     "gulp": "*",
     "gulp-sass": "*",
     "gulp-autoprefixer": "*",
-    "gulp-minify-css": "*",
+    "gulp-pug": "*",
+    "gulp-clean-css": "*",
+    "gulp-filter": "*",
+    "gulp-sourcemaps": "*",
     "gulp-minify": "*",
-    "gulp-livereload": "*"
+    "main-bower-files": "*"
   }
 }

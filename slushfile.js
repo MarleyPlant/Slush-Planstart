@@ -82,14 +82,14 @@ gulp.task('default', function (done) {
     }, {
         name: 'frameworks',
         message: 'Allrighty so now your gonna need some frameworks, what you after?',
-        type: 'checkbox',
+        type: 'list',
         choices: [{
                     name: 'Bootstrap',
-                    value: 'includeBootstrap',
+                    value: 'Bootstrap',
                     checked: true
                   }, {
-                    name: 'MDBootstrap',
-                    value: 'includeMDBootstrap',
+                    name: 'Bulma',
+                    value: 'Bulma',
                     checked: false
                   }, {
                     name: 'FlatUI',
@@ -98,8 +98,8 @@ gulp.task('default', function (done) {
                   }]
     }, {
         type: 'confirm',
-        name: 'addHeaderNav',
-        message: 'Add MDBoostrap Navbar to header?'
+        name: 'includeTemplate',
+        message: 'Include Template?'
     }, {
         type: 'confirm',
         name: 'moveon',
@@ -127,27 +127,6 @@ gulp.task('default', function (done) {
 
 
             answers.appNameSlug = _.slugify(answers.appName);
-            if(answers.frameworks.includes('includeMDBootstrap')){
-                download(' https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/css/mdb.min.css') //MDB CSS
-                  .pipe(gulp.dest("./assets"));
-
-                download('https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js') //MDB JS
-                  .pipe(gulp.dest("./assets"));
-            }
-
-            if(answers.frameworks.includes('includeFlatUI')){
-                download('https://designmodo.github.io/Flat-UI/dist/css/flat-ui.css') //FlatUI CSS
-                  .pipe(gulp.dest("./assets"));
-            }
-
-            if(answers.frameworks.includes('includeBootstrap')){
-                download('https://maxcdn.bootstrapcdn.com/bootstr3ap/4.0.0-alpha.6/css/bootstrap.min.css') //Bootstrap CSS
-                  .pipe(gulp.dest("./assets"));
-
-                download('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js') //Bootstrap JS
-                  .pipe(gulp.dest("./assets"));
-            }
-
             gulp.src(__dirname + '/templates/**')
                 .pipe(template(answers))
                 .pipe(conflict('./'))
