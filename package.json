@@ -21,11 +21,13 @@
     "npm": ">=1.4.3"
   },
   "scripts": {
-    "test": "echo 'No Tests Available for this package!'"
+    "test": "echo 'No Tests Available for this package!'",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "slush": ">=1.0.0",
-    "gulp": "^3.6.2",
+    "gulp": "^4.0.0",
     "gulp-template": "^0.1.1",
     "gulp-install": "^0.1.4",
     "gulp-conflict": "^0.1.1",
@@ -35,9 +37,11 @@
     "iniparser": "^1.0.5",
     "gulp-download": "*",
     "clear": "*",
-    "colors": "*"
+    "colors": "*",
+    "snyk": "^1.104.2"
   },
   "keywords": [
     "slushgenerator"
-  ]
+  ],
+  "snyk": true
 }
