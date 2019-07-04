@@ -16,11 +16,12 @@
     "gulp-sourcemaps": "*",
     "gulp-minify": "*",
     "main-bower-files": "*",
-    "snyk": "^1.85.0"
+    "snyk": "^1.189.0"
   },
   "scripts": {
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "prepublish": "npm run snyk-protect"
   },
   "snyk": true
 }
