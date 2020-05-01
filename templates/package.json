@@ -16,7 +16,7 @@
     "gulp-sourcemaps": "*",
     "gulp-minify": "*",
     "main-bower-files": "*",
-    "snyk": "^1.85.0"
+    "snyk": "^1.316.1"
   },
   "scripts": {
     "snyk-protect": "snyk protect",
